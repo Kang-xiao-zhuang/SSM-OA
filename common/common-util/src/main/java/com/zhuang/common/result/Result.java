@@ -72,9 +72,9 @@ public class Result<T> {
     /**
      * 操作失败
      *
-     * @param data
-     * @param <T>
-     * @return
+     * @param data T
+     * @param <T>  T
+     * @return Result<T>
      */
     public static <T> Result<T> fail(T data) {
         Result<T> result = build(data);
