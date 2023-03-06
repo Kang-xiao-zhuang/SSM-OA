@@ -1,4 +1,4 @@
-package com.zhuang.common.handler;
+package com.zhuang.common.config.exception;
 
 /**
  * description: GlobalExceptionHandler

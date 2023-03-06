@@ -1,4 +1,4 @@
-package com.zhuang.common.handler;
+package com.zhuang.common.config.exception;
 
 import com.zhuang.common.result.ResultCodeEnum;
 import lombok.Data;
