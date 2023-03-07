@@ -3,6 +3,7 @@ package com.zhuang.auth.controller;
 import com.zhuang.auth.service.SysMenuService;
 import com.zhuang.common.result.Result;
 import com.zhuang.model.system.SysMenu;
+import com.zhuang.vo.system.AssginMenuVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,18 @@ public class SysMenuController {
         return Result.ok();
     }
 
+    @ApiOperation(value = "根据角色获取菜单")
+    @GetMapping("toAssign/{roleId}")
+    public Result toAssign(@PathVariable Long roleId) {
+        List<SysMenu> list = sysMenuService.findSysMenuByRoleId(roleId);
+        return Result.ok(list);
+    }
+
+    @ApiOperation(value = "给角色分配权限")
+    @PostMapping("/doAssign")
+    public Result doAssign(@RequestBody AssginMenuVo assignMenuVo) {
+        sysMenuService.doAssign(assignMenuVo);
+        return Result.ok();
+    }
 }
 
