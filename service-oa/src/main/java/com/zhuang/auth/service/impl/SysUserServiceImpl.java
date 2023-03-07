@@ -1,5 +1,6 @@
 package com.zhuang.auth.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zhuang.auth.mapper.SysUserMapper;
 import com.zhuang.auth.service.SysUserService;
@@ -25,5 +26,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             sysUser.setStatus(0);
         }
         this.updateById(sysUser);
+    }
+
+    @Override
+    public SysUser getByUsername(String username) {
+        return this.getOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getUsername, username));
     }
 }
