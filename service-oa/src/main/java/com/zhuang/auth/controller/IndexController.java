@@ -102,14 +102,13 @@ public class IndexController {
      */
     @GetMapping("info")
     public Result info(HttpServletRequest request) {
-        Map<String, Object> map = new HashMap<>();
+/*        Map<String, Object> map = new HashMap<>();
         map.put("roles", "[admin]");
         map.put("name", "admin");
         map.put("avatar", "https://oss.aliyuncs.com/aliyun_id_photo_bucket/default_handsome.jpg");
-        return Result.ok(map);
-/*        //1 从请求头获取用户信息（获取请求头token字符串）
-        String token = request.getHeader("token");
-
+        return Result.ok(map);*/
+       //1 从请求头获取用户信息（获取请求头token字符串）
+        String token = request.getHeader("X-Token");
         //2 从token字符串获取用户id 或者 用户名称
         Long userId = JwtHelper.getUserId(token);
 
@@ -132,7 +131,10 @@ public class IndexController {
         map.put("routers", routerList);
         //返回用户可以操作按钮
         map.put("buttons", permsList);
-        return Result.ok(map);*/
+        return Result.ok(map);
+/*            String username = JwtHelper.getUsername(request.getHeader("token"));
+            Map<String, Object> map = sysUserService.getUserInfo(username);
+            return Result.ok(map);*/
     }
 
     /**
