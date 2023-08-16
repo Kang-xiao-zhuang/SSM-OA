@@ -108,7 +108,7 @@ public class IndexController {
         map.put("avatar", "https://oss.aliyuncs.com/aliyun_id_photo_bucket/default_handsome.jpg");
         return Result.ok(map);*/
        //1 从请求头获取用户信息（获取请求头token字符串）
-        String token = request.getHeader("X-Token");
+        String token = request.getHeader("token");
         //2 从token字符串获取用户id 或者 用户名称
         Long userId = JwtHelper.getUserId(token);
 
